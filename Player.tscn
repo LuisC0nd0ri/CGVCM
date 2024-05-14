@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cabcc3amgty21"]
+[gd_scene load_steps=8 format=3 uid="uid://cabcc3amgty21"]
 
 [ext_resource type="Texture2D" uid="uid://btn3jbjv6x0ht" path="res://Rocky Roads/Enemies/slime_blue.png" id="1_h3ycw"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kc3gv"]
 
-[sub_resource type="Animation" id="Animation_x2rq5"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_qwkuj"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,8 +18,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_qwkuj"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_x2rq5"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -59,9 +60,11 @@ _data = {
 size = Vector2(16, 11)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_kc3gv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_h3ycw")
+flip_h = true
 hframes = 5
 vframes = 2
 
@@ -69,7 +72,10 @@ vframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_8wb7v")
 }
+autoplay = "RESET"
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_pe6el")
+one_way_collision = true
